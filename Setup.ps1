@@ -25,22 +25,4 @@ scoop install go rust
 scoop bucket add extras
 
 # Install applications
-winget install powertoys --silent
-winget install quicklook --silent
-winget install terminal --silent
-winget install synctrayzor --silent
-winget install notepad++ --silent
-
-winget install 1password --silent
-winget install autohotkey --silent
-winget install vivaldi --silent
-winget install discord --silent
-
-winget install rufus --silent
-winget install putty --silent
-winget install vscode --silent
-winget install slack --silent
-winget install powershell --silent
-
-# HexChat's installer likes to pop up an error running vcredist, so run it last
-winget install hexchat --silent
+winget import winget.json
