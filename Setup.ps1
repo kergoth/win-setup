@@ -2,6 +2,8 @@
 powershell .\First.ps1
 
 # Install command-line tools
+
+# Add scoop to the PATH
 $env:Path += ";" + $env:USERPROFILE + "/scoop/shims"
 
 # Quicker downloads
