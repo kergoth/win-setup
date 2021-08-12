@@ -62,7 +62,6 @@ if (-Not (Get-Command scoop -ErrorAction SilentlyContinue))
 {
     Write-Verbose "Installing scoop"
     Invoke-WebRequest -UseBasicParsing get.scoop.sh | Invoke-Expression
-    $env:Path += ";" + $env:USERPROFILE + "/scoop/shims"
 }
 
 # Enable WSL, WSL 2, Sandbox
