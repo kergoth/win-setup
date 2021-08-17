@@ -1,10 +1,10 @@
 # Initial setup
 powershell .\First.ps1
 
-# Install command-line tools
-
 # Add scoop to the PATH
 $env:Path += ";" + $env:USERPROFILE + "/scoop/shims"
+
+# Install command-line tools
 
 # Quicker downloads
 scoop install aria2
@@ -31,3 +31,6 @@ scoop bucket add extras
 
 # Install applications
 winget import winget.json
+
+# Configure
+powershell .\Configure.ps1
