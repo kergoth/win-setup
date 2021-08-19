@@ -1,36 +1,50 @@
+# Get the ID and security principal of the current user account
+$myWindowsID = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$myWindowsPrincipal = new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
+ 
+# Get the security principal for the Administrator role
+$adminRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator
+ 
+# Check to see if we are currently running "as Administrator"
+if (-Not $myWindowsPrincipal.IsInRole($adminRole)) {
+    # We are not running "as Administrator" - so relaunch as administrator
+ 
+    # Create a new process object that starts PowerShell
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+ 
+    # Specify the current script path and name as a parameter
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+ 
+    # Indicate that the process should be elevated
+    $newProcess.Verb = "runas";
+ 
+    # Start the new process
+    [System.Diagnostics.Process]::Start($newProcess);
+ 
+    # Exit from the current, unelevated, process
+    exit
+}
+
+CreateRestorePoint
+
+$ErrorActionPreference = "Continue"
+
+. $PSScriptRoot\Components\Common.ps1
+
 # Initial setup
-powershell .\First.ps1
+. $PSScriptRoot\Components\Baseline.ps1
 
-# Add scoop to the PATH
-$env:Path += ";" + $env:USERPROFILE + "/scoop/shims"
+# Refresh $env:PATH
+RefreshEnvPath
 
-# Install command-line tools
+# Install CLI apps (via scoop, etc)
+. $PSScriptRoot\Components\CLIApps.ps1
 
-# Quicker downloads
-scoop install aria2
+# Refresh $env:PATH
+RefreshEnvPath
 
-# Utilities
-scoop install sudo git gh bat delta gow
+# Install graphical apps (via winget)
+. $PSScriptRoot\Components\GUIApps.ps1
 
-# Editor
-scoop install neovim
-
-# Powershell
-scoop install starship
-
-# Languages
-scoop install go rust
-
-# More utilities
-cargo install fd-find ripgrep
-cargo install --git https://github.com/jez/as-tree
-cargo install --no-default-features --branch chesterliu/dev/win-support --git https://github.com/skyline75489/exa
-
-# Extra scoop apps
-scoop bucket add extras
-
-# Install applications
-winget import winget.json
-
-# Configure
-powershell .\Configure.ps1
+# Refresh $env:PATH
+RefreshEnvPath
