@@ -19,6 +19,8 @@ try {
 
             # Install Arch
             scoop install archwsl
+            # Arch is updated through pacman
+            scoop hold archwsl
         }
 
         $wsl2 = Get-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
