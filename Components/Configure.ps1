@@ -9,6 +9,8 @@ function Invoke-Sophia ($sophiascript) {
     catch {
     }
 
+    CreateRestorePoint
+
     # Enable app sideloading
     New-ItemProperty -Path HKLM:SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock -Name AllowAllTrustedApps -Type DWord -Value 1 -Force
 

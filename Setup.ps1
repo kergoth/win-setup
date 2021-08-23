@@ -25,8 +25,6 @@ if (-Not $myWindowsPrincipal.IsInRole($adminRole)) {
     exit
 }
 
-CreateRestorePoint
-
 $ErrorActionPreference = "Continue"
 
 . $PSScriptRoot\Components\Common.ps1
