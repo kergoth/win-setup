@@ -1,5 +1,4 @@
 <Configuration>
-    <vGPU>Enable</vGPU>
     <Networking>Enable</Networking>
     <MappedFolders>
         <MappedFolder>
