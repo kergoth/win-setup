@@ -29,6 +29,9 @@ try {
             # Use WSL 2 by default
             wsl --set-default-version 2
 
+            # Use WSL 2 for Arch
+            wsl --set-version Arch 2
+
             # Install pwsh
             winget install pwsh --silent
 
