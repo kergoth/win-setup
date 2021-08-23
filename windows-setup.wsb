@@ -4,7 +4,6 @@
         <MappedFolder>
             <HostFolder>C:\Users\clarson\Downloads</HostFolder>
             <SandboxFolder>C:\Users\clarson\Downloads</SandboxFolder>
-            <ReadOnly>true</ReadOnly>
         </MappedFolder>
     </MappedFolders>
     <LogonCommand>
