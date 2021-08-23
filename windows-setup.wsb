@@ -7,6 +7,6 @@
         </MappedFolder>
     </MappedFolders>
     <LogonCommand>
-        <Command>c:\Users\WDAGUtilityAccount\Desktop\Downloads\Setup\windows-setup.cmd</Command>
+        <Command>powershell.exe -command "Start-Process -WindowStyle Maximized c:\Users\clarson\Downloads\Setup\windows-setup.cmd"</Command>
     </LogonCommand>
 </Configuration>
