@@ -32,10 +32,6 @@ try {
             # Install pwsh
             winget install pwsh --silent
 
-
-            # Install pwsh
-            winget install pwsh
-
             # Fix WSL 2 + VPN
             $hypervfix = $env:TEMP + '/hypervfix.zip'
             try {
